@@ -1,7 +1,10 @@
-export const GET_SERIES: string = "GET_SERIES";
-export const PUT_SERIES: string = "PUT_SERIES";
+import { Point } from "../types";
 
-export type Mapping = [any, number][];
+export const GET_SERIES: string = "GET_SERIES";
+export const SET_SERIES: string = "SET_SERIES";
+export const SET_SERIES_LIMITS: string = "SET_SERIES_LIMITS";
+
+export type Mapping = Point[];
 
 export interface GetMappingAction {
   type: typeof GET_SERIES;
@@ -9,8 +12,16 @@ export interface GetMappingAction {
 }
 
 export interface PutMappingAction {
-  type: typeof PUT_SERIES;
+  type: typeof SET_SERIES;
   payload: Mapping;
+}
+
+export interface SetMappingLimitsAction {
+  type: typeof SET_SERIES_LIMITS;
+  payload: {
+    start_time: number;
+    end_time: number;
+  };
 }
 
 export type ActionSeries = GetMappingAction | PutMappingAction;

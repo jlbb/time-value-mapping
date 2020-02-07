@@ -1,9 +1,11 @@
 import {
   GET_SERIES,
   GetMappingAction,
-  PUT_SERIES,
+  SET_SERIES,
   PutMappingAction,
-  Mapping
+  SET_SERIES_LIMITS,
+  Mapping,
+  SetMappingLimitsAction
 } from "./types";
 
 export const getMappingAction = (): GetMappingAction => {
@@ -12,9 +14,22 @@ export const getMappingAction = (): GetMappingAction => {
   };
 };
 
-export const putMappingAction = (m: Mapping = []): PutMappingAction => {
+export const setMappingAction = (m: Mapping = []): PutMappingAction => {
   return {
-    type: PUT_SERIES,
+    type: SET_SERIES,
     payload: m
+  };
+};
+
+export const setMappingLimits = (
+  min: number,
+  max: number
+): SetMappingLimitsAction => {
+  return {
+    type: SET_SERIES_LIMITS,
+    payload: {
+      start_time: min,
+      end_time: max
+    }
   };
 };

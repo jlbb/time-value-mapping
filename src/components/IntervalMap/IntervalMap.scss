@@ -1,0 +1,52 @@
+.IntervalMap {
+  display: flex;
+  margin-bottom: 25px;
+  height: 260px;
+
+  .IntervalMap-key {
+    font-weight: bold;
+    margin-right: 10px;
+    span {
+      color: greenyellow;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin-right: 25px;
+    order: 2;
+    text-align: center;
+    width: 50%;
+    height: 240px;
+    overflow-x: auto;
+
+    li {
+      display: flex;
+      justify-content: flex-end;
+      width: 200px;
+    }
+  }
+
+  .IntervalMap-inputs {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 25px;
+    order: 1;
+    width: 50%;
+
+    span {
+      display: flex;
+      font-weight: bold;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      min-width: 250px;
+
+      input {
+        text-align: center;
+        width: 50px;
+      }
+    }
+  }
+}

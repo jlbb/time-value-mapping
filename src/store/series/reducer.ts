@@ -1,12 +1,18 @@
-import { StateSeries, ActionSeries, GET_SERIES, PUT_SERIES } from "./types";
+import {
+  StateSeries,
+  ActionSeries,
+  GET_SERIES,
+  SET_SERIES,
+  SET_SERIES_LIMITS
+} from "./types";
 
 const defaultState: StateSeries = {
-  start_time: 0,
-  end_time: 6,
+  start_time: -5,
+  end_time: 20,
   M: [
-    [1, 2],
-    [3, 5],
-    [4, 6]
+    { x: 1, y: 2 },
+    { x: 3, y: 5 },
+    { x: 4, y: 6 }
   ]
 };
 
@@ -18,8 +24,14 @@ const reducer = (
     case GET_SERIES:
     default:
       return state;
-    case PUT_SERIES:
+    case SET_SERIES:
       return { ...state, M: action.payload };
+    case SET_SERIES_LIMITS:
+      return {
+        ...state,
+        start_time: action.payload.start_time,
+        end_time: action.payload.end_time
+      };
   }
 };
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CanvasJSReact from "../../lib/canvasjs.react";
-// import CanvasJS from "../../lib/canvasjs.min";
+import { Point } from "../../store/types";
 
 import "./LineCharts.scss";
 
@@ -12,7 +12,7 @@ interface LineChartsProps {
   subMinInterval?: number;
   subMaxInterval?: number;
   title?: string;
-  dataPoints: {}[];
+  points: Point[];
 }
 
 const defaultOptions: any = {
@@ -26,40 +26,26 @@ const defaultOptions: any = {
     {
       type: "line",
       dataPoints: []
-      // dataPoints: [
-      //   { label: "Apple", y: 10 },
-      //   { label: "Orange", y: 15 },
-      //   { label: "Banana", y: 25 },
-      //   { label: "Mango", y: 30 },
-      //   { label: "Grape", y: 28 }
-      // ]
     }
   ]
 };
 
+let chartRef: any = null;
+
 const LineCharts = ({
-  dataPoints: points,
+  points,
   subMinInterval,
   subMaxInterval,
   title
 }: LineChartsProps) => {
-  const chartContainerId: string =
-    "CanvasChart-" + Math.round(Math.random() * Number.MAX_SAFE_INTEGER);
-  // const chart: any = null;
-  let chartRef: any = null;
   const [options, setOptions] = useState(defaultOptions);
   const [dataPoints, setDataPoints] = useState(points);
 
-  // useEffect(() => {
-  //   chart = new (CanvasJS as any).Chart(chartContainerId, options);
-  //   chart.render();
-  // }, []);
-
   useEffect(() => {
-    console.log("DataPoints", dataPoints, options.data);
+    console.log("LineChart points", dataPoints, options.data);
     chartRef.options.data[0].dataPoints = dataPoints;
     chartRef.render();
-  }, []);
+  }, [points]);
 
   useEffect(() => {
     options.title.text = title;
@@ -72,10 +58,12 @@ const LineCharts = ({
   }, [title]);
 
   useEffect(() => {
+    console.log("Sub Intervals", subMinInterval, subMaxInterval);
+
     if (subMinInterval !== undefined && subMaxInterval !== undefined) {
       options.axisX = {
-        viewportMinimum: subMinInterval,
-        viewportMaximum: subMaxInterval
+        viewportMinimum: parseInt(subMinInterval as any),
+        viewportMaximum: parseInt(subMaxInterval as any)
       };
       setOptions(options);
       chartRef.render();
@@ -88,7 +76,6 @@ const LineCharts = ({
     }
   }, [subMinInterval, subMaxInterval]);
 
-  // return <div id={chartContainerId} className={"LineCharts"}></div>;
   return (
     <CanvasJSChart options={options} onRef={(ref: any) => (chartRef = ref)} />
   );
