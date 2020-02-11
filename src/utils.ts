@@ -1,6 +1,11 @@
 import { Point } from "./store/types";
+import { Mapping } from "./store/series/types";
 
-export const interpolation = (arr: Point[], min: number, max: number) => {
+export const interpolation = (
+  arr: Mapping,
+  min: number,
+  max: number
+): Mapping => {
   let newArr = arr;
 
   arr.map((p: Point, idx: number) => {

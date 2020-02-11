@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CanvasJSReact from "../../lib/canvasjs.react";
-import { Point } from "../../store/types";
+import { Mapping } from "../../store/series/types";
 
 import "./LineCharts.scss";
 
@@ -12,7 +12,7 @@ interface LineChartsProps {
   subMinInterval?: number;
   subMaxInterval?: number;
   title?: string;
-  points: Point[];
+  points: Mapping;
 }
 
 const defaultOptions: any = {
@@ -56,15 +56,13 @@ const LineCharts = ({
   subMaxInterval,
   title
 }: LineChartsProps) => {
-  const [options, setOptions] = useState(defaultOptions);
+  const [options, setOptions] = useState<typeof defaultOptions>(defaultOptions);
 
   useEffect(() => {
-    console.log("Effect!?");
     chartRef.render();
   });
 
   useEffect(() => {
-    console.log("LineChart points", points, points, options.data);
     chartRef.options.data[0].dataPoints = points;
     chartRef.render();
   }, [points]);
@@ -80,8 +78,6 @@ const LineCharts = ({
   }, [title]);
 
   useEffect(() => {
-    console.log("Sub Intervals", subMinInterval, subMaxInterval);
-
     if (subMinInterval !== undefined && subMaxInterval !== undefined) {
       options.axisX = {
         ...options.axisX,
@@ -101,8 +97,6 @@ const LineCharts = ({
   }, [subMinInterval, subMaxInterval]);
 
   useEffect(() => {
-    console.log("Intervals", minimum, maximum);
-
     if (minimum !== undefined && maximum !== undefined) {
       options.axisX = {
         ...options.axisX,

@@ -6,7 +6,7 @@ import {
   SET_SERIES_LIMITS
 } from "./types";
 
-export const defaultState: StateSeries = {
+export const defaultSerieState: StateSeries = {
   start_time: -5,
   end_time: 18,
   M: [
@@ -20,7 +20,7 @@ export const defaultState: StateSeries = {
 };
 
 const reducer = (
-  state: StateSeries = defaultState,
+  state: StateSeries = defaultSerieState,
   action: ActionSeries
 ): StateSeries => {
   switch (action.type) {

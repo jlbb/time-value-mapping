@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getMappingAction, setMappingAction } from "../../store/series/actions";
 import { selectSeries } from "../../store/selectors";
 import { interpolation } from "../../utils";
+import { Mapping } from "../../store/series/types";
 
 import "./TimeSeries.scss";
 
@@ -14,7 +15,7 @@ const TimeSeries = ({}: TimeSeriesProps) => {
   const dispatch = useDispatch();
   const series = useSelector(selectSeries);
 
-  const [interval, setInterval] = useState();
+  const [interval, setInterval] = useState<Mapping>([]);
   const [min, setMin] = useState<number>(series.start_time);
   const [max, setMax] = useState<number>(series.end_time);
   const [minSubInterval, setMinSubInterval] = useState<number>();
@@ -28,8 +29,8 @@ const TimeSeries = ({}: TimeSeriesProps) => {
     setInterval(series.M);
   }, [series]);
 
-  const updateInterval = (d: any) => {
-    const newM = interpolation(d, min, max);
+  const updateInterval = (m: Mapping) => {
+    const newM: Mapping = interpolation(m, min, max);
     setInterval(newM);
     dispatch(setMappingAction(newM));
   };

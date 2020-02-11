@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Point } from "../../store/types";
 import Input from "../Input";
 
 import "./IntervalMap.scss";
+import { Mapping } from "../../store/series/types";
 
 interface IntervalMapProps {
-  interval: Point[];
+  interval: Mapping;
   min?: number;
   max?: number;
   minSubInterval?: number;
@@ -29,7 +29,7 @@ const IntervalMap = ({
   onMaxSubUpdate,
   onIntervalUpdate
 }: IntervalMapProps) => {
-  const [data, setData] = useState(interval);
+  const [data, setData] = useState<Mapping>(interval);
 
   useEffect(() => {
     setData(interval);
