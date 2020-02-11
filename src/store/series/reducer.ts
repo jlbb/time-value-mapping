@@ -6,7 +6,7 @@ import {
   SET_SERIES_LIMITS
 } from "./types";
 
-const defaultState: StateSeries = {
+export const defaultState: StateSeries = {
   start_time: -5,
   end_time: 18,
   M: [

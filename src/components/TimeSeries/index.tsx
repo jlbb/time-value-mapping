@@ -37,7 +37,7 @@ const TimeSeries = ({}: TimeSeriesProps) => {
 
   return (
     <div className={"TimeSeries"}>
-      <h1>Time-Series Mapping</h1>
+      <h1>Time-Value Mapping</h1>
       <IntervalMap
         interval={interval}
         min={min}
