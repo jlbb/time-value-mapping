@@ -9,12 +9,16 @@ import {
 } from "./types";
 
 export const getMappingAction = (): GetMappingAction => {
+  // TODO: Perform GET request, to get [start, end, M] (which could update the store, returning it in the payload of the returned action)
+
   return {
     type: GET_SERIES
   };
 };
 
 export const setMappingAction = (m: Mapping = []): PutMappingAction => {
+  // TODO: Perform PUT request, sending the mapping M, and receiving a boolean for success or failure
+
   return {
     type: SET_SERIES,
     payload: m

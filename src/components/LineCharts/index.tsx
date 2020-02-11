@@ -34,16 +34,22 @@ let chartRef: any = null;
 
 const LineCharts = ({
   points,
+  minimum,
+  maximum,
   subMinInterval,
   subMaxInterval,
   title
 }: LineChartsProps) => {
   const [options, setOptions] = useState(defaultOptions);
-  const [dataPoints, setDataPoints] = useState(points);
 
   useEffect(() => {
-    console.log("LineChart points", dataPoints, options.data);
-    chartRef.options.data[0].dataPoints = dataPoints;
+    console.log("Effect!?");
+    chartRef.render();
+  });
+
+  useEffect(() => {
+    console.log("LineChart points", points, points, options.data);
+    chartRef.options.data[0].dataPoints = points;
     chartRef.render();
   }, [points]);
 
@@ -76,8 +82,23 @@ const LineCharts = ({
     }
   }, [subMinInterval, subMaxInterval]);
 
+  useEffect(() => {
+    console.log("Intervals", minimum, maximum);
+
+    if (minimum !== undefined && maximum !== undefined) {
+      options.axisX = {
+        minimum: parseInt(minimum as any),
+        maximum: parseInt(maximum as any)
+      };
+      setOptions(options);
+      chartRef.render();
+    }
+  }, [minimum, maximum]);
+
   return (
-    <CanvasJSChart options={options} onRef={(ref: any) => (chartRef = ref)} />
+    <div className={"LineCharts"}>
+      <CanvasJSChart options={options} onRef={(ref: any) => (chartRef = ref)} />
+    </div>
   );
 };
 

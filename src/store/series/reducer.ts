@@ -8,11 +8,14 @@ import {
 
 const defaultState: StateSeries = {
   start_time: -5,
-  end_time: 20,
+  end_time: 18,
   M: [
+    { x: -1, y: 5 },
     { x: 1, y: 2 },
-    { x: 3, y: 5 },
-    { x: 4, y: 6 }
+    { x: 3, y: 10 },
+    { x: 4, y: 6 },
+    { x: 10, y: 8 },
+    { x: 12, y: 16 }
   ]
 };
 

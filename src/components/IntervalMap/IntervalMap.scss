@@ -2,28 +2,48 @@
   display: flex;
   margin-bottom: 25px;
   height: 260px;
+  margin: 0 5% 15px 5%;
 
   .IntervalMap-key {
     font-weight: bold;
     margin-right: 10px;
+    margin-bottom: 5px;
     span {
-      color: greenyellow;
+      color: #9eeb2c;
     }
   }
 
-  ul {
-    list-style: none;
-    margin-right: 25px;
-    order: 2;
-    text-align: center;
-    width: 50%;
-    height: 240px;
-    overflow-x: auto;
+  .IntervalMap-header {
+    margin: 20px;
+    color: blue;
 
-    li {
-      display: flex;
-      justify-content: flex-end;
-      width: 200px;
+    h3 {
+      margin: 0;
+    }
+  }
+
+  .IntervalMap-intervals {
+    order: 2;
+    width: 50%;
+
+    .IntervalMap-header {
+      color: orange;
+      margin-top: 0;
+    }
+
+    ul {
+      list-style: none;
+      margin-right: 25px;
+      text-align: center;
+      height: 200px;
+      overflow-x: auto;
+
+      li {
+        display: flex;
+        justify-content: flex-end;
+        width: 200px;
+        margin: 0 auto;
+      }
     }
   }
 
@@ -40,7 +60,6 @@
       display: flex;
       font-weight: bold;
       justify-content: space-between;
-      margin-bottom: 8px;
       min-width: 250px;
 
       input {
