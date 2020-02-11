@@ -17,13 +17,29 @@ interface LineChartsProps {
 
 const defaultOptions: any = {
   animationEnabled: true,
+  axisX: {
+    labelFontColor: "white"
+  },
+  axisY: {
+    labelFontColor: "white"
+  },
+  backgroundColor: "#041323",
   title: {
-    text: "Mapping values graph"
+    text: "Mapping values graph",
+    fontColor: "ghostwhite"
+  },
+  toolTip: {
+    backgroundColor: "ghostwhite",
+    borderColor: "white",
+    cornerRadius: 10,
+    fontWeight: "bold"
   },
   zoomEnabled: true,
   zoomType: "x",
   data: [
     {
+      color: "#458c49",
+      markerColor: "darkorange",
       type: "line",
       dataPoints: []
     }
@@ -68,6 +84,7 @@ const LineCharts = ({
 
     if (subMinInterval !== undefined && subMaxInterval !== undefined) {
       options.axisX = {
+        ...options.axisX,
         viewportMinimum: parseInt(subMinInterval as any),
         viewportMaximum: parseInt(subMaxInterval as any)
       };
@@ -75,6 +92,7 @@ const LineCharts = ({
       chartRef.render();
 
       options.axisX = {
+        ...options.axisX,
         viewportMinimum: null,
         viewportMaximum: null
       };
@@ -87,6 +105,7 @@ const LineCharts = ({
 
     if (minimum !== undefined && maximum !== undefined) {
       options.axisX = {
+        ...options.axisX,
         minimum: parseInt(minimum as any),
         maximum: parseInt(maximum as any)
       };

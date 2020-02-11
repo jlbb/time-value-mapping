@@ -26,7 +26,6 @@ const TimeSeries = ({}: TimeSeriesProps) => {
 
   useEffect(() => {
     setInterval(series.M);
-    return () => setMin(min);
   }, [series]);
 
   const updateInterval = (d: any) => {
@@ -37,7 +36,6 @@ const TimeSeries = ({}: TimeSeriesProps) => {
 
   return (
     <div className={"TimeSeries"}>
-      <h1>Time-Value Mapping</h1>
       <IntervalMap
         interval={interval}
         min={min}
@@ -56,7 +54,7 @@ const TimeSeries = ({}: TimeSeriesProps) => {
         maximum={max}
         subMinInterval={minSubInterval}
         subMaxInterval={maxSubInterval}
-        title={"LineChart time-series mapping"}
+        title={"Line chart time-value mapping"}
       />
     </div>
   );

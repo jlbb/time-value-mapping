@@ -35,9 +35,9 @@ const IntervalMap = ({
     setData(interval);
   }, [interval]);
 
-  const renderLimits = (label: string, value: any, callback: any) => {
+  const renderIntervalValues = (label: string, value: any, callback: any) => {
     return (
-      <span>
+      <div className={"IntervalMap-value"}>
         <label className={"IntervalMap-key"}>
           <span>{label}</span>
         </label>
@@ -46,7 +46,7 @@ const IntervalMap = ({
           value={value}
           onChangeValue={(v: any) => callback(v)}
         />
-      </span>
+      </div>
     );
   };
 
@@ -59,7 +59,7 @@ const IntervalMap = ({
     <div className={"IntervalMap"}>
       <div className={"IntervalMap-intervals"}>
         <div className={"IntervalMap-header"}>
-          <h3>Time => Value </h3>
+          <h3>Time: Value </h3>
           (Edit value to interpolate the missing time-value in the interval)
         </div>
         <ul>
@@ -67,30 +67,26 @@ const IntervalMap = ({
             interval.map((point, idx) => {
               return (
                 <li>
-                  {renderLimits(`${point.x} => `, point.y, (y: any) =>
+                  {renderIntervalValues(`${point.x}: `, point.y, (y: any) =>
                     updateIntervalPoint(y, idx)
                   )}
-                  {/* <label className={"IntervalMap-key"}>
-                    <span>{point.x}</span> =>
-                  </label>
-                  <Input
-                    type="text"
-                    value={point.y}
-                    onChangeValue={(y: any) => updateIntervalPoint(y, idx)}
-                  /> */}
                 </li>
               );
             })}
         </ul>
       </div>
       <div className={"IntervalMap-inputs"}>
-        {renderLimits("Minimum Interval:", min, onMinUpdate)}
-        {renderLimits("Maximum Interval:", max, onMaxUpdate)}
+        <div className={"IntervalMap-header"}>
+          <h3>Intervals</h3>
+        </div>
+        {renderIntervalValues("Minimum:", min, onMinUpdate)}
+        {renderIntervalValues("Maximum:", max, onMaxUpdate)}
+        <br />
         <div className={"IntervalMap-header"}>
           <h3>Sub-intervals</h3>(change values to zoom in a sub-interval)
         </div>
-        {renderLimits("Minimum SubInterval:", minSubInterval, onMinSubUpdate)}
-        {renderLimits("Maximum SubInterval:", maxSubInterval, onMaxSubUpdate)}
+        {renderIntervalValues("Minimum:", minSubInterval, onMinSubUpdate)}
+        {renderIntervalValues("Maximum:", maxSubInterval, onMaxSubUpdate)}
       </div>
     </div>
   );

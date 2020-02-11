@@ -1,7 +1,7 @@
-# Time-Series Mapping
+# Time-Value Mapping
 
 This project is a [React](https://reactjs.org/docs/getting-started.html) application -created using [create-react-app](https://github.com/facebook/create-react-app)- and TypeScript, which implements a mapping of a time-value series represented in a line chart (using [CanvasJS](https://canvasjs.com/docs/charts/basics-of-creating-html5-chart/) library),
-and from which we can update the mapping time-values, intervals, and sub-intervals using the inputs. When a time-value is changed it will trigger the interpolation of the missing time-values within the [minimum, maxixum] interval.
+and from which we can update the mapping time-values, intervals, and sub-intervals using the inputs. When a time-value is changed it will trigger the interpolation of the missing time-values within the [minimum, maxixum] interval. The UI of the application is responsive, so it will adapt for smaller screens too.
 
 ### Setup
 
